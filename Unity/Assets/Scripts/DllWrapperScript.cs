@@ -1,46 +1,50 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
+using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class DllWrapperScript : MonoBehaviour
 {
-    [DllImport("Dll_C_SampleForUnity")]
-    public static extern int return42();
+	[DllImport("Dll_C_SampleForUnity")]
+	public static extern int return42();
+	
+	//Tableau créé côté C#
+	[DllImport("Dll_C_SampleForUnity")]
+	public static extern double sum(double[] tab, int tabSize);
 
-    [DllImport("Dll_C_SampleForUnity")]
-    public static extern double sum(double[] tab, int tabSize);
+	//Tableau créé côté C++
+	[DllImport("Dll_C_SampleForUnity")]
+	public static extern IntPtr create_array(int tabSize);
+	
+	//Tableau créé côté C++
+	[DllImport("Dll_C_SampleForUnity")]
+	public static extern void delete_array(IntPtr tab);
 
-    [DllImport("Dll_C_SampleForUnity")]
-    public static extern IntPtr create_array(int tabSize);
 
-    [DllImport("Dll_C_SampleForUnity")]
-    public static extern void delete_array(double[] tab);
+	public Transform[] spheres;
+	
+	
+	// Use this for initialization
+	void Start () {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //foreach (var)
-        Debug.Log(return42());
+		foreach (var sphere in spheres)
+		{
+			Debug.Log(sphere.position);
+		}
+		
+		Debug.Log(return42());
+		
+		Debug.Log(sum(new double[] {1,2,3,4,5}, 5));
+		
+		var managedArray = new double[10];
+		var rawArray = create_array(10);
+		
+		Marshal.Copy(rawArray, managedArray, 0, 10);
 
-        var tab = new double[10];
-        var rawArray = create_array(10);
-
-        Marshal.Copy(rawArray, tab, 0, 10);
-
-        foreach(double index in tab)
-        {
-            Debug.Log(index);
-        }
-
-        delete_array(tab);
-        Debug.Log(tab.Length);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		delete_array(rawArray);
+		foreach (var elt in managedArray)
+		{
+			Debug.Log(elt);
+		}
+	}
 }
