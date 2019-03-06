@@ -21,7 +21,7 @@ namespace UnitTest
 			double* res = create_model(10);
 			for (int i = 0; i < 10; i++)
 			{
-				Assert::IsTrue(res[i] <= 1 && res[i] >= -1);
+				Assert::IsTrue(res[i] == 1 || res[i] == -1);
 			}
 		}
 

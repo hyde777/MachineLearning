@@ -12,8 +12,11 @@ extern "C" {
 
 		for (int i = 0; i < 10; i++)
 		{
-			double scale = rand() % 3;
-			tab[i] = -1 + scale;
+			double scale = rand() % 2;
+			if (scale == 0)
+				tab[i] = -1;
+			else
+				tab[i] = 1;
 		}
 		return tab;
 	}
