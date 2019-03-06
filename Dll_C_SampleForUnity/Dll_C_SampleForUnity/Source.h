@@ -10,6 +10,7 @@ extern "C" {
 														int size_model,
 														double* inputs,
 														int size_inputs,
+														int dimension_size,
 														double* expected_outputs,
 														int expected_outputs_size,
 														double learning_rate,
