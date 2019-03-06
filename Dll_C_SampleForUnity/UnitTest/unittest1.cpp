@@ -42,8 +42,10 @@ namespace UnitTest
 			double model[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 			int modelSize = 10;
 			double input[9] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			int inputSize = 9;
+
 			// when
-			int sut = inference_linear_classif(model, modelSize, input);
+			int sut = inference_linear_classif(model, modelSize, input, inputSize);
 			// then
 			int tot = model[0];
 			for (int i = 1; i < 10; i++)
@@ -58,8 +60,9 @@ namespace UnitTest
 			double model[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 			int modelSize = 10;
 			double input[9] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			int inputSize = 9;
 			// when
-			int sut = sign_inference_linear_classif(model, modelSize, input);
+			int sut = sign_inference_linear_classif(model, modelSize, input, inputSize);
 			// then
 			Assert::AreEqual(sut, 1);
 		}
@@ -69,6 +72,7 @@ namespace UnitTest
 			double model[10] = { 1, 2, -3, -4, -5, -6, -7, -8, -9, -10 };
 			int modelSize = 10;
 			double input[9] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
 			// when
 			int sut = inference_linear_regression(model, modelSize, input);
 			// then

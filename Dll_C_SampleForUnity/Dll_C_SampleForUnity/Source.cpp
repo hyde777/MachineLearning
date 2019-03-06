@@ -29,19 +29,19 @@ extern "C" {
 		return 1;
 	}
 
-	__declspec(dllexport) double inference_linear_classif(double* model, int modelSize, double* input)
+	__declspec(dllexport) double inference_linear_classif(double* model, int modelSize, double* input, int inputSize)
 	{
 		double total = model[0];
-		for (int i = 1; i < modelSize; i++)
+		for (int i = 1; i < inputSize; i++)
 		{
 			total += model[i] + input[i - 1];
 		}
 		return total;
 	}
 
-	__declspec(dllexport) int sign_inference_linear_classif(double* model, int modelSize, double* input)
+	__declspec(dllexport) int sign_inference_linear_classif(double* model, int modelSize, double* input, int inputSize)
 	{
-		return sign(inference_linear_classif(model, modelSize, input));
+		return sign(inference_linear_classif(model, modelSize, input, inputSize));
 	}
 
 	__declspec(dllexport) double inference_linear_regression(double* model, int modelSize, double* input)
@@ -69,7 +69,7 @@ extern "C" {
 			{
 				int k =(int) inputs[j];
 				double* input = &inputs[j + 1];
-				int gxK = sign_inference_linear_classif(model, size_model, input);
+				int gxK = sign_inference_linear_classif(model, size_model, input, 2);
 				double yK = expected_outputs[k];
 				for (int w = 0; w <= size_inputs; w++)
 				{
