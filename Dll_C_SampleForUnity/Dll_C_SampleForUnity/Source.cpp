@@ -9,14 +9,15 @@ extern "C" {
 
 	__declspec(dllexport) double* create_model(int nb_input) {
 		double* tab = (double*) malloc(nb_input * sizeof(double));
-		double scale = rand();
 
 		for (int i = 0; i < 10; i++)
 		{
-			tab[i] = -1 + scale * 2;
+			double scale = rand() % 3;
+			tab[i] = -1 + scale;
 		}
 		return tab;
 	}
+
 
 	__declspec(dllexport) int sign(double nb)
 	{
