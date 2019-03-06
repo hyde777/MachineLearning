@@ -49,4 +49,34 @@ extern "C" {
 		}
 		return total;
 	}
+
+	__declspec(dllexport) void train_linear_classif(double* model,
+												      int size_model,
+													  double* inputs,
+													  int size_inputs,
+													  double* expected_outputs,
+													  int expected_outputs_size,
+													  double learning_rate,
+												      int nb_epochs)
+	{
+		for (int i = 0; i < nb_epochs; i++)
+		{
+			for (int j = 0; i < size_inputs; j = j + 2)
+			{
+				int k =(int) inputs[j];
+				double* input = &inputs[j + 1];
+				int gxK = sign_inference_linear_classif(model, size_model, input);
+				double yK = expected_outputs[k];
+				for (int w = 0; w <= size_inputs; w++)
+				{
+					int temp;
+					if (w == 0)
+						temp = 1;
+					else
+						temp = input[w - 1];
+					model[w] += learning_rate * (yK - gxK) * temp;
+				}
+			}
+		}
+	}
 }  

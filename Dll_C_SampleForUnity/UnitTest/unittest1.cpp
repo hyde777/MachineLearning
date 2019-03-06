@@ -79,5 +79,11 @@ namespace UnitTest
 			}
 			Assert::AreEqual(sut, tot);
 		}
+
+		TEST_METHOD(should_train_model_and_give_some_answer) {
+			// given
+			// when
+			// then 
+		}
 	};
 }
