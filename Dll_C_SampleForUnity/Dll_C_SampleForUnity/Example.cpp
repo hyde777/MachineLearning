@@ -1,7 +1,7 @@
 
 extern "C" {
 
-	__declspec(dllexport) int return42() {
+	/*__declspec(dllexport) int return42() {
 		return 42;
 	}
 
