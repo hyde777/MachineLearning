@@ -9,11 +9,11 @@ extern "C" {
 
 	__declspec(dllexport) double* create_model(int nb_input) {
 		double* tab = (double*) malloc(nb_input * sizeof(double));
-		srand(time(NULL));
+		double scale = rand();
 
 		for (int i = 0; i < 10; i++)
 		{
-			tab[i] = (rand() % 2) - 1;
+			tab[i] = -1 + scale * 2;
 		}
 		return tab;
 	}
