@@ -1,3 +1,4 @@
-Dll_C_SampleForUnity\x64
-Dll_C_SampleForUnity\.vs
-Dll_C_SampleForUnity\Dll_C_SampleForUnity\x64
+Dll_C_SampleForUnity/x64/*
+Dll_C_SampleForUnity\/.vs\*
+Dll_C_SampleForUnity/Dll_C_SampleForUnity/x64/
+Dll_C_SampleForUnity/UnitTest/x64
