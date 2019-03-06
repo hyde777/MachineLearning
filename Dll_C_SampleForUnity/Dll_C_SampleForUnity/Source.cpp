@@ -10,7 +10,7 @@ extern "C" {
 	__declspec(dllexport) double* create_model(int nb_input) {
 		double* tab = (double*) malloc(nb_input * sizeof(double));
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < nb_input; i++)
 		{
 			double scale = rand() % 2;
 			if (scale == 0)
