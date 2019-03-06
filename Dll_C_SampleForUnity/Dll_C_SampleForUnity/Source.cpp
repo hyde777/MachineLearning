@@ -4,19 +4,16 @@
 
 extern "C" {
 	__declspec(dllexport) int return42() {
-		return 42;
+		return 121;
 	}
 
 	__declspec(dllexport) double* create_model(int nb_input) {
-		double* tab = (double*) malloc(nb_input * sizeof(double));
+		double* tab = (double*) malloc((nb_input + 1) * sizeof(double));
 
 		for (int i = 0; i < nb_input; i++)
 		{
-			double scale = rand() % 2;
-			if (scale == 0)
-				tab[i] = -1;
-			else
-				tab[i] = 1;
+			double scale = (rand() / (double) RAND_MAX) * 2 - 1;
+			tab[i] = scale;
 		}
 		return tab;
 	}
@@ -32,7 +29,7 @@ extern "C" {
 	__declspec(dllexport) double inference_linear_classif(double* model, int modelSize, double* input, int inputSize)
 	{
 		double total = model[0];
-		for (int i = 1; i < inputSize; i++)
+		for (int i = 1; i <= inputSize; i++)
 		{
 			total += model[i] + input[i - 1];
 		}
@@ -47,7 +44,7 @@ extern "C" {
 	__declspec(dllexport) double inference_linear_regression(double* model, int modelSize, double* input)
 	{
 		double total = 0;
-		for (int i = 1; i < modelSize; i++)
+		for (int i = 1; i <= modelSize; i++)
 		{
 			total += model[i] + input[i - 1];
 		}
@@ -57,6 +54,7 @@ extern "C" {
 	__declspec(dllexport) void train_linear_classif(double* model,
 												      int size_model,
 													  double* inputs,
+													  int dimension_size,
 													  int size_inputs,
 													  double* expected_outputs,
 													  int expected_outputs_size,
@@ -65,15 +63,15 @@ extern "C" {
 	{
 		for (int i = 0; i < nb_epochs; i++)
 		{
-			for (int j = 0; i < size_inputs; j = j + 2)
+			for (int j = 0; i < size_inputs; j = j + dimension_size)
 			{
-				int k =(int) inputs[j];
-				double* input = &inputs[j + 1];
-				int gxK = sign_inference_linear_classif(model, size_model, input, 2);
+				int k = j / dimension_size;
+				double* input = &inputs[j];
+				int gxK = sign_inference_linear_classif(model, size_model, input, dimension_size);
 				double yK = expected_outputs[k];
-				for (int w = 0; w <= size_inputs; w++)
+				for (int w = 0; w <= dimension_size; w++)
 				{
-					int temp;
+					double temp;
 					if (w == 0)
 						temp = 1;
 					else
