@@ -1,8 +1,10 @@
-﻿  Source.cpp
-     Création de la bibliothèque c:\users\loghan\source\repos\Dll_C_SampleForUnity\x64\Release\Dll_C_SampleForUnity.lib et de l'objet c:\users\loghan\source\repos\Dll_C_SampleForUnity\x64\Release\Dll_C_SampleForUnity.exp
+﻿  Example.cpp
+  Source.cpp
+c:\users\loghan\documents\machin_learning\machinelearning\dll_c_sampleforunity\dll_c_sampleforunity\source.cpp(12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+     Création de la bibliothèque C:\Users\Loghan\Documents\Machin_Learning\MachineLearning\Dll_C_SampleForUnity\x64\Release\Dll_C_SampleForUnity.lib et de l'objet C:\Users\Loghan\Documents\Machin_Learning\MachineLearning\Dll_C_SampleForUnity\x64\Release\Dll_C_SampleForUnity.exp
   Génération de code en cours
-  0 of 3 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  9 of 9 functions (100.0%) were compiled.
+    6 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
-  Dll_C_SampleForUnity.vcxproj -> c:\users\loghan\source\repos\Dll_C_SampleForUnity\x64\Release\Dll_C_SampleForUnity.dll
+  Dll_C_SampleForUnity.vcxproj -> C:\Users\Loghan\Documents\Machin_Learning\MachineLearning\Dll_C_SampleForUnity\x64\Release\Dll_C_SampleForUnity.dll
