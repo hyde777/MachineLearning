@@ -273,6 +273,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e859aed373bf946afbd726cbd6a17c, type: 3}
+  m_Script: {fileID: 11500000, guid: 79c6e93895b63ba489de748b82f7af29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spheres: []
+  model: []
